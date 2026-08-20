@@ -1,0 +1,117 @@
+/* ====================================================================
+   PaperChess — flat grayscale stylesheet for slow e-ink screens.
+   One rule per line; solid fills only (no shadows, no gradients,
+   no border-radius) so partial repaints stay cheap.
+   Squares: e3e3e3 / a6a6a6. Markers: tint fills, check = frame.
+   ==================================================================== */
+
+* { margin:0; padding:0; -webkit-box-sizing:border-box; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+
+html, body { background:#ffffff; color:#111111; font-family:Verdana, Geneva, sans-serif; -webkit-text-size-adjust:100%; }
+
+.screen { max-width:560px; margin:0 auto; padding:8px 4px; }
+.screen.hidden { display:none; }
+
+/* ---------- start screen ---------- */
+.masthead { border-top:4px solid #000000; border-bottom:1px solid #000000; padding:14px 0 10px 0; margin-top:8px; text-align:center; }
+.logo { font-size:30px; font-weight:bold; letter-spacing:3px; line-height:1; }
+.logo em { font-style:normal; display:inline-block; background:#000000; color:#ffffff; padding:0 5px; }
+.tag { font-size:9px; letter-spacing:4px; margin-top:7px; }
+.deco { margin-top:12px; display:table; width:100%; border-spacing:3px 0; table-layout:fixed; }
+.deco span { display:table-cell; border:1px solid #000000; padding:4px 0; text-align:center; }
+.deco span img { width:24px; height:24px; vertical-align:middle; image-rendering:-webkit-optimize-contrast; }
+.deco span:nth-child(even) { background:#000000; }
+
+.panel { border:1px solid #000000; padding:10px 8px; margin-top:14px; }
+.panel-label { font-size:9px; font-weight:bold; letter-spacing:3px; border-bottom:1px solid #000000; padding:2px 0; margin:8px 0 6px 0; }
+.panel-label:first-child { margin-top:0; }
+
+/* level list: full-width rows */
+#lvl-list { border:1px solid #000000; }
+.lvl-row { display:table; width:100%; table-layout:fixed; border-bottom:1px solid #000000; padding:6px 4px; cursor:pointer; }
+.lvl-row:last-child { border-bottom:0; }
+.lvl-row b { display:table-cell; width:22px; font-size:15px; vertical-align:middle; }
+.lvl-row .nm { display:table-cell; font-size:14px; font-weight:bold; vertical-align:middle; }
+.lvl-row.on { background:#000000; color:#ffffff; }
+
+/* mode + side tiles */
+#side-tiles, #mode-tiles { display:table; width:100%; border-spacing:3px 0; table-layout:fixed; }
+#mode-tiles { margin-bottom:4px; }
+.side-tile { display:table-cell; border:1px solid #000000; text-align:center; padding:8px 2px; cursor:pointer; }
+.side-tile b { display:block; font-size:14px; }
+.side-tile small { display:block; font-size:9px; margin-top:2px; }
+.side-tile.on { background:#000000; color:#ffffff; }
+
+/* buttons: fill-first, hairline border only on outline variant */
+.btn { display:block; width:100%; background:#000000; color:#ffffff; border:1px solid #000000; font-family:Verdana, Geneva, sans-serif; font-size:13px; font-weight:bold; letter-spacing:2px; padding:11px 4px; min-height:46px; cursor:pointer; text-align:center; }
+.btn.go { border-width:2px; margin-top:14px; }
+.btn.alt { background:#ffffff; color:#111111; margin-top:8px; }
+
+/* start buttons: one row when a saved game exists */
+#start-btns { display:table; width:100%; table-layout:fixed; border-spacing:5px 0; border-collapse:separate; }
+#start-btns .btn { display:table-cell; margin-top:14px; }
+#start-btns .btn.go { width:100%; }
+#start-btns.two .btn { width:50%; font-size:12px; letter-spacing:1px; padding:11px 2px; }
+
+.elo-line { text-align:center; font-size:11px; font-family:'Courier New', monospace; margin-top:12px; }
+.start-foot { text-align:center; font-size:9px; letter-spacing:2px; margin:14px 0 6px 0; }
+.made { text-align:center; font-size:9px; letter-spacing:3px; font-family:'Courier New', monospace; margin-top:5px; margin-bottom:10px; }
+.made a { color:#111111; font-weight:bold; text-decoration:none; border-bottom:1px solid #000000; }
+
+/* ---------- play screen ---------- */
+.play-top { display:table; width:100%; table-layout:fixed; border-bottom:1px solid #000000; padding-bottom:6px; }
+.brand2 { display:table-cell; text-align:left; font-size:13px; font-weight:bold; letter-spacing:2px; vertical-align:middle; }
+.brand2 em { font-style:normal; background:#000000; color:#ffffff; padding:0 3px; }
+.turn { display:table-cell; text-align:center; font-size:12px; font-weight:bold; letter-spacing:2px; vertical-align:middle; }
+.turn.fin { background:#000000; color:#ffffff; padding:3px 6px; }
+.elo2 { display:table-cell; text-align:right; font-size:11px; font-family:'Courier New', monospace; font-weight:bold; vertical-align:middle; }
+
+.meta { display:table; width:100%; table-layout:fixed; border-bottom:1px solid #000000; padding:4px 0; white-space:nowrap; }
+.meta .m-txt { display:table-cell; text-align:left; vertical-align:middle; font-size:10px; letter-spacing:2px; overflow:hidden; }
+.meta .m-btns { display:table-cell; text-align:right; vertical-align:middle; }
+.mbtn { display:inline-block; background:#ffffff; color:#111111; border:1px solid #000000; font-family:Verdana, Geneva, sans-serif; font-size:10px; font-weight:bold; letter-spacing:1px; padding:6px 10px; cursor:pointer; }
+.mbtn + .mbtn { margin-left:4px; }
+
+/* --- board --- */
+#board-wrap { display:table; margin:6px auto 0 auto; position:relative; }
+#board { border:6px double #000000; border-collapse:collapse; margin:0 auto; background:#ffffff; }
+#board td { border:1px solid #ffffff; text-align:center; vertical-align:middle; font-size:26px; font-weight:bold; line-height:0; padding:0; cursor:pointer; }
+#board td.coord { border:0; font-size:8px; font-weight:normal; line-height:1; font-family:'Courier New', monospace; color:#111111; background:#ffffff; cursor:default; padding:0 2px; vertical-align:middle; }
+
+/* square fills (light e3e3e3 / dark a6a6a6) */
+.sq-l { background:#e3e3e3; }
+.sq-d { background:#a6a6a6; }
+
+/* piece sprites: block display removes the inline-baseline descender
+   gap that inflates rows on older WebKit (Kindle) */
+#board td img { display:block; margin:0 auto; width:84%; height:84%; image-rendering:-webkit-optimize-contrast; }
+
+/* captured sprite sizing (kept for any future use) is unused: no bars below board */
+
+/* markers, weakest to strongest: last move = mid tint, capture =
+   dark tint, selection = strong tint, check = solid frame */
+.sq-last { background:#c6c6c6; }
+.sq-target { color:#222222; }
+.sq-capture { background:#6e6e6e; }
+.sq-sel { background:#909090; }
+.sq-check { outline:5px solid #000000; outline-offset:-5px; }
+
+/* result popup: centred inside the board, four squares wide */
+.board-pop { display:none; position:absolute; left:50%; top:50%; width:50%; margin-left:-25%; margin-top:-85px; background:#ffffff; border:2px solid #000000; padding:12px 8px 10px 8px; text-align:center; z-index:6; }
+.board-pop.show { display:block; }
+.pop-title { font-size:17px; font-weight:bold; letter-spacing:2px; border-bottom:1px solid #000000; padding-bottom:6px; margin-bottom:6px; }
+.pop-body { font-size:11px; font-family:'Courier New', monospace; line-height:1.5; margin-bottom:9px; }
+
+/* ---------- modals ---------- */
+.overlay { display:none; position:fixed; left:0; top:0; width:100%; height:100%; background:rgba(255,255,255,0.94); z-index:10; }
+.overlay.show { display:block; }
+
+.box { width:90%; max-width:380px; margin:40px auto 0 auto; background:#ffffff; border:1px solid #000000; padding:14px; }
+.box-title { font-weight:bold; font-size:13px; text-align:center; letter-spacing:3px; border-bottom:1px solid #000000; padding-bottom:6px; margin-bottom:12px; }
+.result-word { font-weight:bold; font-size:24px; text-align:center; letter-spacing:3px; border-top:4px double #000000; border-bottom:4px double #000000; padding:10px 0; margin-bottom:10px; }
+.box-body { font-size:12px; text-align:center; line-height:1.6; margin:8px 0; font-family:'Courier New', monospace; }
+
+.seg { display:table; width:100%; border-collapse:separate; border-spacing:3px 0; }
+.seg-btn { display:table-cell; background:#ffffff; border:1px solid #000000; font-family:Verdana, Geneva, sans-serif; font-size:13px; font-weight:bold; padding:8px 2px; min-height:46px; cursor:pointer; vertical-align:middle; line-height:1.2; }
+.seg-btn b { display:inline-block; min-width:22px; padding:0 3px; margin-right:3px; }
+.seg-btn img { width:32px; height:32px; vertical-align:-10px; margin-right:4px; image-rendering:-webkit-optimize-contrast; }

@@ -1,0 +1,5 @@
+server.log
+.DS_Store
+serve.sh
+tests/
+.pi/

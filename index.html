@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="description" content="PaperChess — offline chess vs bot or a friend, built for Kindle e-ink.">
+    <title>PaperChess</title>
+    <link rel="stylesheet" href="css/paperchess.css?v=15">
+</head>
+<body>
+
+    <!-- ============ START SCREEN ============ -->
+    <div id="screen-start" class="screen">
+
+        <div class="masthead">
+            <div class="logo">PAPER<em>CHESS</em></div>
+            <div class="tag">OFFLINE CHESS FOR E-READERS</div>
+            <div class="deco" id="deco-row">
+                <span><img src="img/w-king.png?v=2" alt=""></span><span><img src="img/w-queen.png?v=2" alt=""></span><span><img src="img/w-rook.png?v=2" alt=""></span><span><img src="img/w-bishop.png?v=2" alt=""></span><span><img src="img/w-knight.png?v=2" alt=""></span><span><img src="img/w-pawn.png?v=2" alt=""></span>
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-label">OPPONENT</div>
+            <div id="mode-tiles">
+                <div class="side-tile" data-v="bot"><b>VS BOT</b><small>play the engine</small></div>
+                <div class="side-tile" data-v="2p"><b>2 PLAYERS</b><small>share this device</small></div>
+            </div>
+
+            <div id="bot-setup">
+            <div class="panel-label">BOT LEVEL</div>
+            <div id="lvl-list">
+                <div class="lvl-row" data-v="1"><b>1</b><span class="nm">Pawn</span></div>
+                <div class="lvl-row" data-v="2"><b>2</b><span class="nm">Knight</span></div>
+                <div class="lvl-row" data-v="3"><b>3</b><span class="nm">Bishop</span></div>
+                <div class="lvl-row" data-v="4"><b>4</b><span class="nm">Rook</span></div>
+                <div class="lvl-row" data-v="5"><b>5</b><span class="nm">Queen</span></div>
+            </div>
+
+            <div class="panel-label">PLAY AS</div>
+            <div id="side-tiles">
+                <div class="side-tile" data-v="w"><b>WHITE</b><small>you move first</small></div>
+                <div class="side-tile" data-v="b"><b>BLACK</b><small>bot moves first</small></div>
+            </div>
+            </div>
+
+            <div id="start-btns">
+                <button class="btn go" id="btn-start">START NEW GAME</button>
+                <button class="btn alt" id="btn-resume" style="display:none;">RESUME LAST GAME</button>
+            </div>
+            <div class="elo-line" id="start-elo">Your rating: 1200</div>
+        </div>
+
+        <div class="made">MADE BY <a href="https://8ugust.dev" rel="noopener">8UGUST.DEV</a></div>
+    </div>
+
+    <!-- ============ PLAY SCREEN ============ -->
+    <div id="screen-play" class="screen hidden">
+        <div class="play-top">
+            <span class="brand2">PAPER<em>CHESS</em></span>
+            <span class="turn" id="turn-label">YOUR MOVE</span>
+            <span class="elo2" id="elo-badge">1200</span>
+        </div>
+
+        <div class="meta">
+            <span class="m-txt" id="match-row">&nbsp;</span>
+            <span class="m-btns">
+                <button class="mbtn" id="btn-undo">UNDO</button>
+                <button class="mbtn" id="btn-new">NEW GAME</button>
+                <button class="mbtn" id="btn-menu">MENU</button>
+            </span>
+        </div>
+
+        <div id="board-wrap">
+            <table id="board" cellpadding="0" cellspacing="0" border="0"></table>
+            <div class="board-pop" id="over-pop">
+                <div class="pop-title" id="over-title">GAME OVER</div>
+                <div class="pop-body" id="over-body">&nbsp;</div>
+                <div class="pop-btns">
+                    <button class="mbtn" id="btn-new2">NEW GAME</button>
+                    <button class="mbtn" id="btn-close-pop">CLOSE</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ PROMOTION ============ -->
+    <div class="overlay" id="promo-modal">
+        <div class="box">
+            <div class="box-title">PROMOTE PAWN TO</div>
+            <div class="seg" id="promo-seg">
+                <button class="seg-btn wide" data-v="5"><img id="promo-i5" src="img/w-queen.png?v=2" alt="">Queen</button>
+                <button class="seg-btn wide" data-v="4"><img id="promo-i4" src="img/w-rook.png?v=2" alt="">Rook</button>
+                <button class="seg-btn wide" data-v="3"><img id="promo-i3" src="img/w-bishop.png?v=2" alt="">Bishop</button>
+                <button class="seg-btn wide" data-v="2"><img id="promo-i2" src="img/w-knight.png?v=2" alt="">Knight</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/engine.js?v=3"></script>
+    <script src="js/ai.js?v=3"></script>
+    <script src="js/app.js?v=16"></script>
+</body>
+</html>
