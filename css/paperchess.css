@@ -55,10 +55,10 @@ html, body { background:#ffffff; color:#111111; font-family:Verdana, Geneva, san
 
 .elo-line { text-align:center; font-size:11px; font-family:'Courier New', monospace; margin-top:12px; }
 .start-foot { text-align:center; font-size:9px; letter-spacing:2px; margin:14px 0 6px 0; }
-.back { text-align:center; font-size:9px; letter-spacing:3px; font-family:'Courier New', monospace; margin-top:5px; }
-.back a { color:#111111; font-weight:bold; text-decoration:none; border-bottom:1px solid #000000; }
-.made { text-align:center; font-size:9px; letter-spacing:3px; font-family:'Courier New', monospace; margin-top:5px; margin-bottom:10px; }
-.made a { color:#111111; font-weight:bold; text-decoration:none; border-bottom:1px solid #000000; }
+.foot { display:table; width:100%; table-layout:fixed; font-size:9px; letter-spacing:3px; font-family:'Courier New', monospace; margin-top:5px; }
+.back { display:table-cell; text-align:left; }
+.made { display:table-cell; text-align:right; }
+.foot a { color:#111111; font-weight:bold; text-decoration:none; border-bottom:1px solid #000000; }
 
 /* ---------- play screen ---------- */
 .play-top { display:table; width:100%; table-layout:fixed; border-bottom:1px solid #000000; padding-bottom:6px; }
